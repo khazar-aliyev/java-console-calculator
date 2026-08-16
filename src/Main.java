@@ -1,13 +1,41 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
-
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        double num1;
+        double num2;
+        char operator;
+        double result=0;
+        boolean validOperation=true;
+        System.out.println("Hello to Calculator");
+        System.out.print("Enter your first number:");
+        num1 = scanner.nextDouble();
+        System.out.println("Enter your second number: ");
+        num2 = scanner.nextDouble();
+        System.out.println("Enter your operator:(+,-,*,/,^ ) ");
+        operator = scanner.next().charAt(0);
+        switch (operator){
+            case '+'-> result = num1+num2;
+            case '-'-> result = num1-num2;
+            case '*'-> result = num1*num2;
+            case '/'-> {
+                if(num2==0){
+                    System.out.println("Cannot divide by 0");
+                    validOperation=false;
+                }
+                else{
+                    result=num1/num2;
+                }
+            }
+            case '^'-> result = Math.pow(num1,num2);
+            default ->{
+                System.out.println("Invalid operator");
+                validOperation=false;
+            }
+        }
+        if(validOperation){
+            System.out.println(result);
+        }
+        scanner.close();
+    }
 }
